@@ -1,3 +1,7 @@
+// The code is well structured with react hooks 
+// The code uses modular structure which is great
+// the styling is also good
+
 import { useState } from 'react';
 import './App.css';
 import Display from "./components/Display";
@@ -28,9 +32,11 @@ const App = () => {
     event.preventDefault()
 
     switch(button){
+      // When rendering tasks using map, it's important to assign a unique key to each item
       case 'button1':
         setAllTasksToDisplay(allTasks.map((task) => task))
         break
+      //the filtering logic for 'button2' and 'button3' is repeated.
       case 'button2':
         setAllTasksToDisplay(allTasks.filter((task) => task.checked === true))
         break
@@ -39,7 +45,7 @@ const App = () => {
         break
     }
   }
-
+  //In my opinion using the index as the identifier for deletion is not good. Use something unique to the task may be "taskId"
   const handleDelete = (event, index) => {
     event.preventDefault()
     const deleted = allTasks.filter((task, i) => i !== index)
@@ -54,6 +60,7 @@ const App = () => {
     setTodoInput(allTasks[index].task)
     handleDelete(event, index)
   }
+
 
   console.log(allTasks)
 
